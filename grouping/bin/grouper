@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+# CLI entry point for the CSV person grouper.
+#
+# Usage:
+#   ./bin/grouper <input_file> <matching_type>
+#
+# Examples:
+#   ./bin/grouper input1.csv same_email
+#   ./bin/grouper input2.csv same_email_or_phone
+#   ./bin/grouper input3.csv same_phone
+#
+# Matching types:
+#   same_email          - group rows sharing any email address
+#   same_phone          - group rows sharing any phone number
+#   same_email_or_phone - group rows sharing any email OR phone (transitive)
+#
+# Output is written to <input_name>_output.csv in the same directory.
+
+require_relative "../lib/grouper"
+
+Grouper.run(ARGV[0], ARGV[1])
